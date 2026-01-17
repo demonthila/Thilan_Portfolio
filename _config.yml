@@ -1,0 +1,15 @@
+# Jekyll configuration file
+# Exclude source-files directory from Jekyll processing
+# These are third-party library files that shouldn't be processed
+
+exclude:
+  - HTML/source-files/
+  - Documentation/
+  - Img/
+  - .git
+  - .gitignore
+  - README.md
+
+# Set source and destination if needed
+# source: .
+# destination: ./_site
