@@ -138,15 +138,7 @@
   --t-opp-bright--light: #FFFFFF;
   --t-opp-medium--light: #ACACAC;
   --t-opp-muted--light: #838383;
-  --bg-demo-screen-01--light: url(../img/demo/screens/01.webp);
-  --bg-demo-screen-02--light: url(../img/demo/screens/02.webp);
-  --bg-demo-screen-03--light: url(../img/demo/screens/03.webp);
-  --bg-demo-screen-04--light: url(../img/demo/screens/04.webp);
-  --bg-demo-screen-05--light: url(../img/demo/screens/05.webp);
-  --bg-demo-screen-06--light: url(../img/demo/screens/06.webp);
-  --bg-demo-screen-07--light: url(../img/demo/screens/07.webp);
-  --bg-demo-screen-08--light: url(../img/demo/screens/08.webp);
-  --bg-demo-screen-09--light: url(../img/demo/screens/09.webp);
+ 
   /* dark color scheme */
   --base--dark: #161616;
   --base-rgb--dark: 22, 22, 22;
@@ -381,135 +373,135 @@
 /* Template Backgrounds Start */
 /* ------------------------------------------------*/
 .about-image-1 {
-  background-image: url(https://dummyimage.com/1400x1000/5d5d5d/838383);
+  background-image: url(../img/demo/01_fea-img.webp);
 }
 
 .divider-image-1 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/2.png);
 }
 
 .divider-image-2 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/2.png);
 }
 
 .divider-image-3 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/2.png);
 }
 
 .divider-image-4 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .divider-image-5 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .divider-image-6 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/2.png);
 }
 
 .divider-image-7 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .divider-image-8 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .divider-image-9 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .divider-image-10 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/backgrounds/NPW06990\ 1.png);
 }
 
 .mxd-promo__bg {
-  background-image: url(https://dummyimage.com/1400x900/838383/5d5d5d);
+  background-image: url(../img/illustrations/1440x900_cta-01.webp);
 }
 
 .preview-image-1 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/01-d.webp);
 }
 
 .preview-image-2 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/02-d.webp);
 }
 
 .preview-image-3 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/03-d.webp);
 }
 
 .preview-image-4 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/04-d.webp);
 }
 
 .preview-image-5 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/05-d.webp);
 }
 
 .preview-image-6 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/06-d.webp);
 }
 
 .preview-image-7 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/demo/screens/07-d.webp);
 }
 
 .blog-preview-image-1 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/demo/inner/01_about-me.webp);
 }
 
 .blog-preview-image-2 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/demo/inner/02_about-us.webp);
 }
 
 .blog-preview-image-3 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/demo/inner/03_services.webp);
 }
 
 .headline-img-01::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (3).webp);
 }
 
 .headline-img-02::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (4).webp);
 }
 
 .headline-img-03::after {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (5).webp);
 }
 
 .headline-img-04::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (6).webp);
 }
 
 .headline-img-05::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (7).webp);
 }
 
 .headline-img-06::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image (8).webp);
 }
 
 .headline-img-07::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/illustrations/image.webp);
 }
 
 .image-values-1 {
-  background-image: url(https://dummyimage.com/1200x1600/5d5d5d/838383);
+  background-image: url(../img/demo/01_resp-img.webp);
 }
 
 .image-values-2 {
-  background-image: url(https://dummyimage.com/1600x1200/5d5d5d/838383);
+  background-image: url(../img/demo/01_comp-img.webp);
 }
 
 .prj-details-img-01 {
-  background-image: url(https://dummyimage.com/1920x1200/414141/636363);
+  background-image: url(../img/demo/screens/08-d.webp);
 }
 
 .prj-details-img-02 {
-  background-image: url(https://dummyimage.com/1920x1200/414141/636363);
+  background-image: url(../img/demo/screens/09-d.webp);
 }
 
 /* ------------------------------------------------*/
