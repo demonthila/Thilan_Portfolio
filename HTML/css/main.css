@@ -6440,10 +6440,7 @@ form textarea:required:valid {
   }
 }
 
-.mxd-footer__text-wrap {
-  position: relative;
-  width: 100%;
-}
+
 
 .mxd-footer__fullwidth-text {
   position: relative;
