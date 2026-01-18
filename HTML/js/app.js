@@ -629,22 +629,49 @@ $(function() {
   // --------------------------------------------- //
   // Contact Form Start
   // --------------------------------------------- //
-  $("#contact-form").submit(function() { //Change
+  $("#contact-form").submit(function(e) {
+    e.preventDefault();
     var th = $(this);
+    
+    // Show loading state
+    var submitBtn = th.find('button[type="submit"]');
+    var originalText = submitBtn.find('.btn-caption').text();
+    submitBtn.prop('disabled', true).find('.btn-caption').text('Sending...');
+    
     $.ajax({
       type: "POST",
-      url: "mail.php", //Change
-      data: th.serialize()
-    }).done(function() {
-      $('.contact').find('.form').addClass('is-hidden');
-      $('.contact').find('.form__reply').addClass('is-visible');
-      setTimeout(function() {
-        // Done Functions
-        $('.contact').find('.form__reply').removeClass('is-visible');
-        $('.contact').find('.form').delay(300).removeClass('is-hidden');
-        th.trigger("reset");
-      }, 5000);
+      url: "mail.php",
+      data: th.serialize(),
+      dataType: 'text'
+    }).done(function(response) {
+      console.log('Form submitted successfully:', response);
+      // Check if response indicates success
+      if (response.trim() === 'success' || response.trim() === '') {
+        $('.contact').find('.form').addClass('is-hidden');
+        $('.contact').find('.form__reply').addClass('is-visible');
+        setTimeout(function() {
+          // Done Functions
+          $('.contact').find('.form__reply').removeClass('is-visible');
+          $('.contact').find('.form').delay(300).removeClass('is-hidden');
+          th.trigger("reset");
+          submitBtn.prop('disabled', false).find('.btn-caption').text(originalText);
+        }, 5000);
+      } else {
+        throw new Error('Server returned: ' + response);
+      }
+    }).fail(function(xhr, status, error) {
+      console.error('Form submission failed:', {
+        status: status,
+        error: error,
+        response: xhr.responseText,
+        statusCode: xhr.status
+      });
+      
+      // Show user-friendly error message
+      alert('Unable to send email. This may be because your hosting doesn\'t support PHP mail().\n\nPlease contact me directly at: sanjulathilan12321@gmail.com');
+      submitBtn.prop('disabled', false).find('.btn-caption').text(originalText);
     });
+    
     return false;
   });
   // --------------------------------------------- //

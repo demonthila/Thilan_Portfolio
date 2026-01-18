@@ -572,6 +572,49 @@
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
     <script src="js/app.js"></script>
+    
+    <!-- EmailJS SDK (for static hosting compatibility) -->
+    <!-- To use EmailJS: 
+         1. Sign up at https://www.emailjs.com/
+         2. Connect your Gmail (sanjulathilan12321@gmail.com)
+         3. Create email template with fields: {{Name}}, {{E-mail}}, {{Message}}
+         4. Replace YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY below
+         5. Uncomment the EmailJS script and form handler -->
+    <!--
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("YOUR_PUBLIC_KEY");
+        
+        // Override default form handler with EmailJS
+        $("#contact-form").off('submit').on('submit', function(e) {
+          e.preventDefault();
+          var th = $(this);
+          var submitBtn = th.find('button[type="submit"]');
+          var originalText = submitBtn.find('.btn-caption').text();
+          submitBtn.prop('disabled', true).find('.btn-caption').text('Sending...');
+          
+          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function() {
+              console.log('Email sent successfully!');
+              $('.contact').find('.form').addClass('is-hidden');
+              $('.contact').find('.form__reply').addClass('is-visible');
+              setTimeout(function() {
+                $('.contact').find('.form__reply').removeClass('is-visible');
+                $('.contact').find('.form').delay(300).removeClass('is-hidden');
+                th.trigger("reset");
+                submitBtn.prop('disabled', false).find('.btn-caption').text(originalText);
+              }, 5000);
+            }, function(error) {
+              console.error('EmailJS Error:', error);
+              alert('Sorry, there was an error. Please contact me directly at sanjulathilan12321@gmail.com');
+              submitBtn.prop('disabled', false).find('.btn-caption').text(originalText);
+            });
+          return false;
+        });
+      })();
+    </script>
+    -->
     <!-- Load Scripts End -->
     
   </body>
