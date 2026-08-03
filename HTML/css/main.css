@@ -19589,6 +19589,10 @@ form textarea:required:valid {
   -ms-flex-direction: column;
   flex-direction: column;
   gap: 1.6rem;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  width: 100%;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -19609,11 +19613,17 @@ form textarea:required:valid {
 }
 
 .mxd-res-list__descr {
-  max-width: 560px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .mxd-res-list__year {
   margin-bottom: 1.1rem;
+  white-space: nowrap;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-left: 2rem;
 }
 
 .mxd-res-list__year p {
