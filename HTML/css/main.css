@@ -19563,16 +19563,9 @@ form textarea:required:valid {
 
 @media only screen and (min-width: 1200px) {
   .mxd-res-list__content {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -moz-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 2.8rem;
     padding: 6rem 0 7rem 0;
   }
 }
@@ -19597,7 +19590,21 @@ form textarea:required:valid {
 
 @media only screen and (min-width: 1200px) {
   .mxd-res-list__data {
-    gap: 2.8rem;
+    display: contents;
+  }
+  .mxd-res-list__title {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .mxd-res-list__year {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    align-self: start;
+    margin-bottom: 0;
+  }
+  .mxd-res-list__descr {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
   }
 }
 
