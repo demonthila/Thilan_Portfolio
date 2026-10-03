@@ -552,14 +552,15 @@
           body: new FormData(form)
         });
         
-        if (response.ok) {
+        const text = await response.text();
+        if (response.ok && text.trim() === "success") {
           note.textContent = "Thanks — your message is on its way. I'll get back to you soon.";
           form.reset();
         } else {
           throw new Error("Failed to send");
         }
       } catch (err) {
-        note.textContent = "Couldn't send right now — please email sanjulathilan12321@gmail.com directly.";
+        note.textContent = "Couldn't send right now — please email sanjulathilan12321@gmail.com directly. (Ensure you are running on a PHP server)";
       }
     });
   }
