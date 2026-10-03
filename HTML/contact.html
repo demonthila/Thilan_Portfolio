@@ -22,10 +22,7 @@
 <link rel="stylesheet" href="assets/css/site.css">
 <script>try{if(sessionStorage.getItem("pt"))document.documentElement.classList.add("is-entering")}catch(e){}</script>
 
-<!-- Optional: direct sending via EmailJS (works on GitHub Pages). Fill in your keys from
-     https://www.emailjs.com/ — until then the form opens the visitor's email app. -->
-<script>window.EMAILJS_CONFIG = { publicKey: "", serviceId: "", templateId: "" };</script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+
 </head><body id="top">
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
@@ -81,6 +78,8 @@
     </div>
     <form class="form" id="contact-form" data-fade>
       <input type="hidden" name="project_name" value="Sanjula Thilan Portfolio">
+      <input type="hidden" name="admin_email" value="sanjulathilan12321@gmail.com">
+      <input type="hidden" name="form_subject" value="New Contact Form Message">
       <div class="form__row">
         <div class="field"><label for="f-name">Your name*</label><input id="f-name" type="text" name="Name" autocomplete="name" placeholder="Jane Citizen" required></div>
         <div class="field"><label for="f-mail">Email*</label><input id="f-mail" type="email" name="E-mail" autocomplete="email" placeholder="jane@company.com" required></div>

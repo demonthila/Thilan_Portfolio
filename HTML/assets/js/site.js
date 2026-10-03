@@ -544,22 +544,23 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const note = $(".form__note", form);
-      const data = Object.fromEntries(new FormData(form));
-      const cfg = window.EMAILJS_CONFIG || {};
-      if (window.emailjs && cfg.publicKey && cfg.serviceId && cfg.templateId) {
-        note.textContent = "Sending…";
-        try {
-          emailjs.init(cfg.publicKey);
-          await emailjs.sendForm(cfg.serviceId, cfg.templateId, form);
+      note.textContent = "Sending…";
+      
+      try {
+        const response = await fetch("mail.php", {
+          method: "POST",
+          body: new FormData(form)
+        });
+        
+        if (response.ok) {
           note.textContent = "Thanks — your message is on its way. I'll get back to you soon.";
           form.reset();
-        } catch (_) { note.textContent = "Couldn't send right now — please email sanjulathilan12321@gmail.com directly."; }
-        return;
+        } else {
+          throw new Error("Failed to send");
+        }
+      } catch (err) {
+        note.textContent = "Couldn't send right now — please email sanjulathilan12321@gmail.com directly.";
       }
-      const subject = encodeURIComponent(`Portfolio enquiry from ${data.Name || ""}`.trim());
-      const body = encodeURIComponent(`${data.Message || ""}\n\n— ${data.Name || ""}\n${data["E-mail"] || ""}`);
-      note.textContent = "Opening your email app…";
-      location.href = `mailto:sanjulathilan12321@gmail.com?subject=${subject}&body=${body}`;
     });
   }
 
