@@ -876,6 +876,7 @@ animateInUp.forEach((element) => {
     opacity: 1,
     scrollTrigger: {
       trigger: element,
+      start: 'top bottom+=150',
       toggleActions: 'play none none reverse',
     }
   });
@@ -952,6 +953,7 @@ if(document.querySelector(".animate-card-2")) {
     interval: 0.1,
     batchMax: 2,
     duration: 3,
+    start: 'top bottom+=150',
     onEnter: batch => gsap.to(batch, {
       opacity: 1, 
       y: 0,
@@ -973,6 +975,7 @@ if(document.querySelector(".animate-card-3")) {
     interval: 0.1,
     batchMax: 3,
     duration: 3,
+    start: 'top bottom+=150',
     onEnter: batch => gsap.to(batch, {
       opacity: 1, 
       y: 0,
@@ -994,6 +997,7 @@ if(document.querySelector(".animate-card-4")) {
     interval: 0.1,
     batchMax: 4,
     delay: 1000,
+    start: 'top bottom+=150',
     onEnter: batch => gsap.to(batch, {
       opacity: 1, 
       y: 0,
