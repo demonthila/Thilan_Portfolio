@@ -1,3 +1,33 @@
+# ######################################################################
+# # SITE RULES (Sanjula Thilan)                                        #
+# ######################################################################
+
+<FilesMatch "\.(md|py|yml|log)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Always use https:// (also works behind a proxy such as Cloudflare)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # Old case study addresses -> new ones (keeps old links and Google rankings)
+    RewriteRule ^Dela\.html$ /HTML/dela-marketplace-ux.html [R=301,L]
+    RewriteRule ^active\ care\.html$ /HTML/active-care-ux.html [R=301,L]
+    RewriteRule ^Leave\ App\.html$ /HTML/iom-leave-app-ux.html [R=301,L]
+    RewriteRule ^novalink\.html$ /HTML/novalink-pm-saas.html [R=301,L]
+    RewriteRule ^OrangeHRM\.html$ /HTML/orangehrm-redesign.html [R=301,L]
+    RewriteRule ^Graphic\ Desiging\.html$ /HTML/graphic-design.html [R=301,L]
+
+    # The old template demo page is gone for good
+    RewriteRule ^index-software-development-company\.html$ - [G,L]
+</IfModule>
+
 # Apache Server Configs v2.11.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
 
@@ -85,7 +115,7 @@
 # Customize what Apache returns to the client in case of an error.
 # https://httpd.apache.org/docs/current/mod/core.html#errordocument
 
-ErrorDocument 404 /404.html
+ErrorDocument 404 /HTML/404.html
 
 # ----------------------------------------------------------------------
 # | Error prevention                                                   |

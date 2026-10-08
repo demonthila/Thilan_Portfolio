@@ -536,11 +536,12 @@
   });
 
   /* ---------- Contact form ----------
-     Static hosting (GitHub Pages) can't run mail.php. If EmailJS keys are set
-     in window.EMAILJS_CONFIG the form sends directly; otherwise it opens the
-     visitor's email app with the message pre-filled. */
+     Posts to mail.php on the PHP host. form_started lets the server
+     reject bots that submit instantly. */
   const form = $("#contact-form");
   if (form) {
+    const started = $('input[name="form_started"]', form);
+    if (started) started.value = String(Date.now());
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const note = $(".form__note", form);
@@ -560,7 +561,7 @@
           throw new Error("Failed to send");
         }
       } catch (err) {
-        note.textContent = "Couldn't send right now — please email sanjulathilan12321@gmail.com directly. (Ensure you are running on a PHP server)";
+        note.textContent = "Couldn't send right now. Please email sanjulathilan12321@gmail.com directly.";
       }
     });
   }
