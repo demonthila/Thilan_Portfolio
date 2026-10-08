@@ -1,0 +1,22 @@
+# Site-wide server rules for thilan.novalinkinnovations.com
+# HTML/.htaccess holds the rules for pages inside /HTML (redirects, caching, compression).
+
+# Custom "page not found" page
+ErrorDocument 404 /HTML/404.html
+
+# Hide files that aren't part of the website
+<FilesMatch "(\.(md|py|yml|log)|\.gitignore)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Always use https:// (also works behind a proxy such as Cloudflare)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+</IfModule>

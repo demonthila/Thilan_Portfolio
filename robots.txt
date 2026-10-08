@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /HTML/mail.php
+
+Sitemap: https://thilan.novalinkinnovations.com/sitemap.xml
