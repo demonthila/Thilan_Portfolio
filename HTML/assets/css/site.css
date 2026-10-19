@@ -639,6 +639,33 @@ a.magnetic:not(.pill-btn):not(.dl-btn) { display: inline-block; }
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
+/* ---------- AI marketing videos ---------- */
+.videos-page { padding-block: clamp(40px, 6vw, 90px) clamp(60px, 8vw, 120px); }
+.videos { display: grid; grid-template-columns: 1.58fr 1fr; gap: clamp(28px, 3vw, 48px) clamp(12px, 1.4vw, 24px); }
+.vid { display: flex; flex-direction: column; min-width: 0; }
+.vid--tall { grid-column: 2; grid-row: 1 / span 2; }
+.vid__btn { position: relative; display: block; width: 100%; border-radius: var(--radius); overflow: hidden; background: color-mix(in srgb, var(--fg) 10%, transparent); cursor: pointer; margin-bottom: 16px; }
+.vid--wide .vid__btn { aspect-ratio: 16 / 9; }
+.vid--tall .vid__btn { flex: 1; min-height: 0; }
+.vid__preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.vid__btn:hover .vid__preview { transform: scale(1.035); }
+.vid__play { position: absolute; left: clamp(14px, 1.4vw, 24px); bottom: clamp(14px, 1.4vw, 24px); width: clamp(48px, 4.4vw, 68px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--ink); transition: transform .5s var(--ease); }
+.vid__play svg { width: 38%; height: 38%; margin-left: 6%; }
+.vid__btn:hover .vid__play { transform: scale(1.12); }
+.vid__len { position: absolute; right: clamp(14px, 1.4vw, 24px); bottom: clamp(14px, 1.4vw, 24px); padding: .45em .8em; border-radius: 999px; background: rgba(15, 14, 12, .6); color: var(--paper); font-size: var(--t-xs); font-weight: 500; font-variant-numeric: tabular-nums; }
+.vid figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.vid__name { font-family: var(--f-display); font-size: var(--t-lg); font-weight: 500; letter-spacing: -.02em; line-height: 1.1; }
+.vid figcaption .label { color: var(--muted); }
+.vlightbox { position: fixed; inset: 0; z-index: 995; background: rgba(15, 14, 12, .94); display: grid; place-items: center; padding: 72px var(--gutter) var(--gutter); opacity: 0; pointer-events: none; transition: opacity .35s var(--ease); }
+.vlightbox.is-open { opacity: 1; pointer-events: auto; }
+.vlightbox video { max-width: min(1280px, 100%); max-height: calc(100svh - 100px); border-radius: calc(var(--radius) * .7); background: #000; }
+.vlightbox__close { position: fixed; top: 22px; right: var(--gutter); color: var(--paper); font-size: var(--t-sm); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .videos { grid-template-columns: 1fr; }
+  .vid--tall { grid-column: auto; grid-row: auto; }
+  .vid--tall .vid__btn { flex: none; aspect-ratio: 9 / 16; max-height: 82svh; }
+}
+
 @media (max-width: 1100px) {
   .skill-cols { grid-template-columns: repeat(2, 1fr); }
   .contact__row { grid-template-columns: repeat(2, 1fr); }

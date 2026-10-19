@@ -601,6 +601,39 @@
     });
   }
 
+  /* ---------- AI marketing videos: muted hover preview, click to watch with sound ---------- */
+  function initVideos() {
+    const vlb = $(".vlightbox");
+    if (!vlb) return;
+    const player = $("video", vlb);
+    let opener = null;
+    const close = () => {
+      if (!vlb.classList.contains("is-open")) return;
+      player.pause(); player.removeAttribute("src"); player.load();
+      vlb.classList.remove("is-open"); vlb.setAttribute("aria-hidden", "true");
+      lenis && lenis.start();
+      opener && opener.focus();
+    };
+    $$("[data-video]").forEach((btn) => {
+      const prev = $(".vid__preview", btn);
+      if (prev && fine && !reduce) {
+        btn.addEventListener("mouseenter", () => { prev.preload = "auto"; prev.play().catch(() => {}); });
+        btn.addEventListener("mouseleave", () => prev.pause());
+      }
+      btn.addEventListener("click", () => {
+        opener = btn;
+        prev && prev.pause();
+        player.src = btn.dataset.video;
+        vlb.classList.add("is-open"); vlb.setAttribute("aria-hidden", "false");
+        lenis && lenis.stop();
+        player.play().catch(() => {});
+        $(".vlightbox__close", vlb).focus();
+      });
+    });
+    vlb.addEventListener("click", (e) => { if (e.target !== player) close(); });
+    d.addEventListener("keydown", (e) => e.key === "Escape" && close());
+  }
+
   /* ---------- Boot ---------- */
   const fontsReady = d.fonts && d.fonts.ready ? d.fonts.ready : Promise.resolve();
   const enterDelay = enterFromCurtain();
@@ -618,6 +651,7 @@
     initQuotes();
     initCV();
     initWordmark();
+    initVideos();
     ScrollTrigger.refresh();
   });
   addEventListener("load", () => ScrollTrigger.refresh());
