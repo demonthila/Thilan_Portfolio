@@ -348,6 +348,89 @@
     }
   }
 
+  /* ---------- Hero motion graphic: dot wave field, drifting orbs, letter lift ---------- */
+  function heroFx() {
+    const hero = $(".hero");
+    const cv = hero && $(".hero__field", hero);
+    if (!cv) return;
+    const ctx = cv.getContext("2d");
+    const ink = [15, 14, 12], violet = [159, 139, 231], lime = [196, 216, 60];
+    let w = 0, h = 0, dpr = 1, gap = 26, cols = 0, rows = 0;
+    const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999, a: 0 };
+    const size = () => {
+      const r = hero.getBoundingClientRect();
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = r.width; h = r.height;
+      gap = w < 700 ? 22 : 26;
+      cv.width = w * dpr; cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cols = Math.ceil(w / gap) + 1; rows = Math.ceil(h / gap) + 1;
+    };
+    const mix = (a, b, t) => `${Math.round(a[0] + (b[0] - a[0]) * t)},${Math.round(a[1] + (b[1] - a[1]) * t)},${Math.round(a[2] + (b[2] - a[2]) * t)}`;
+    const draw = (t) => {
+      ctx.clearRect(0, 0, w, h);
+      mouse.x += (mouse.tx - mouse.x) * 0.12; mouse.y += (mouse.ty - mouse.y) * 0.12;
+      const R = Math.min(260, w * 0.22);
+      for (let iy = 0; iy < rows; iy++) {
+        for (let ix = 0; ix < cols; ix++) {
+          let x = ix * gap + (iy % 2 ? gap / 2 : 0), y = iy * gap;
+          // travelling interference waves
+          const wv = Math.sin(ix * 0.32 + t * 1.3) * Math.cos(iy * 0.28 - t * 0.9) + Math.sin((ix + iy) * 0.12 - t * 0.7);
+          let r = 0.7 + (wv + 2) * 0.32;
+          let alpha = 0.08 + (wv + 2) * 0.045;
+          let col = ink, k = 0;
+          const dx = x - mouse.x, dy = y - mouse.y, dist = Math.hypot(dx, dy);
+          if (dist < R) {
+            k = (1 - dist / R) ** 2 * mouse.a;
+            const push = k * 18;
+            x += (dx / (dist || 1)) * push; y += (dy / (dist || 1)) * push;
+            r += k * 3.2; alpha += k * 0.75;
+          }
+          ctx.fillStyle = k > 0.02 ? `rgba(${mix(violet, lime, Math.min(1, k * 1.6))},${Math.min(1, alpha)})` : `rgba(${col.join(",")},${alpha})`;
+          ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+        }
+      }
+    };
+    size();
+    addEventListener("resize", () => { size(); if (reduce) draw(0); });
+    if (reduce) { draw(0); return; }
+
+    let visible = true, start = performance.now(), raf = 0;
+    const loop = (now) => { draw((now - start) / 1000); raf = visible ? requestAnimationFrame(loop) : 0; };
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible && !raf) raf = requestAnimationFrame(loop); }).observe(hero);
+    raf = requestAnimationFrame(loop);
+
+    // drifting colour orbs
+    gsap.to(".hero__orb--v", { xPercent: 18, yPercent: -12, scale: 1.15, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    gsap.to(".hero__orb--l", { xPercent: -16, yPercent: 14, scale: 0.88, duration: 11, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    gsap.from(".hero__fx", { opacity: 0, duration: 2, delay: 0.4 });
+    gsap.from(".hero__badge", { scale: 0, rotate: -120, duration: 1.4, delay: 0.9 });
+
+    const chars = $$(".hero__word .ch", hero);
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      mouse.tx = e.clientX - r.left; mouse.ty = e.clientY - r.top;
+      if (mouse.x < -999) { mouse.x = mouse.tx; mouse.y = mouse.ty; }
+      gsap.to(mouse, { a: 1, duration: 0.6, overwrite: "auto" });
+      if (!fine) return;
+      chars.forEach((ch) => {
+        const b = ch.getBoundingClientRect();
+        const dd = Math.hypot(e.clientX - (b.left + b.width / 2), e.clientY - (b.top + b.height / 2));
+        const k = Math.max(0, 1 - dd / 320);
+        gsap.to(ch, { y: -k * b.height * 0.12, color: k > 0.55 ? "#9F8BE7" : "#0F0E0C", duration: 0.6, ease: "power3", overwrite: "auto" });
+      });
+    });
+    hero.addEventListener("pointerleave", () => {
+      gsap.to(mouse, { a: 0, duration: 0.8, overwrite: "auto" });
+      gsap.to(chars, { y: 0, color: "#0F0E0C", duration: 0.8, ease: "power3", overwrite: "auto", onComplete: () => gsap.set(chars, { clearProps: "color" }) });
+    });
+    if (fine) {
+      const ox = gsap.quickTo(".hero__orb--v", "x", { duration: 2.4, ease: "power3" });
+      const oy = gsap.quickTo(".hero__orb--v", "y", { duration: 2.4, ease: "power3" });
+      hero.addEventListener("pointermove", (e) => { ox((e.clientX / innerWidth - 0.5) * 120); oy((e.clientY / innerHeight - 0.5) * 80); });
+    }
+  }
+
   function rolesSwap() {
     $$(".roles-swap").forEach((box) => {
       const items = $$("span", box);
@@ -641,6 +724,7 @@
     const extra = await preloader();
     initMarquees();
     heroIntro(enterDelay + extra);
+    heroFx();
     rolesSwap();
     initSignature();
     initWork();

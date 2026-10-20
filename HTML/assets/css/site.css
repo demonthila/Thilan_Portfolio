@@ -231,6 +231,23 @@ a.magnetic:not(.pill-btn):not(.dl-btn) { display: inline-block; }
   padding: 96px var(--gutter) 0;
   overflow: clip;
 }
+.hero > :not(.hero__fx) { position: relative; z-index: 1; }
+.hero > .band { z-index: 2; }
+.hero__fx { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.hero__field { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; will-change: transform; }
+.hero__orb--v { width: 46vw; height: 46vw; left: 4%; top: 12%; background: radial-gradient(circle at 40% 40%, var(--violet), transparent 68%); }
+.hero__orb--l { width: 38vw; height: 38vw; right: 2%; top: 30%; background: radial-gradient(circle at 50% 50%, var(--lime), transparent 66%); opacity: .6; }
+.hero__row--2 { position: relative; }
+.hero__badge { position: absolute; z-index: 2; left: 1.3em; top: -.2em; width: .5em; height: .5em; color: var(--ink); filter: drop-shadow(0 10px 24px rgba(15, 14, 12, .18)); }
+.hero__badge svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.hero__badge-bg { fill: var(--lime); }
+.hero__badge-ring { transform-origin: 100px 100px; animation: badge-spin 16s linear infinite; }
+.hero__badge text { font-family: var(--f-body); font-size: 15px; font-weight: 600; letter-spacing: .1em; fill: currentColor; }
+.hero__badge-arrow { transition: transform .5s var(--ease); transform-origin: 100px 100px; }
+.hero__badge:hover .hero__badge-arrow { transform: rotate(45deg); }
+@keyframes badge-spin { to { transform: rotate(360deg); } }
+.hero__star svg { animation: badge-spin 12s linear infinite; }
 .hero__meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding-bottom: clamp(10px, 2vh, 24px); border-bottom: 1px solid var(--line); }
 .hero__meta > :nth-child(2) { text-align: center; }
 .hero__meta > :last-child { text-align: right; }
@@ -686,6 +703,10 @@ a.magnetic:not(.pill-btn):not(.dl-btn) { display: inline-block; }
   .hero__row--2 { flex-direction: row-reverse; justify-content: space-between; }
   .hero__row--2 .hero__pill { width: 1.25em; height: .7em; }
   .hero__index { display: none; }
+  .hero__badge { display: none; }
+  .hero__orb { filter: blur(40px); }
+  .hero__orb--v { width: 90vw; height: 90vw; left: -20%; top: 18%; }
+  .hero__orb--l { width: 70vw; height: 70vw; right: -20%; top: 44%; }
   .hero__based { grid-template-columns: 1fr; gap: 14px; }
   .based__big { font-size: 11.4vw; }
   .based__roles { text-align: left; justify-self: start; }
@@ -772,6 +793,7 @@ a.magnetic:not(.pill-btn):not(.dl-btn) { display: inline-block; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .hero__badge-ring, .hero__star svg { animation: none; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .grain { animation: none; }
   .signature__media { clip-path: none; }

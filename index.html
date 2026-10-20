@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&amp;family=Funnel+Sans:ital,wght@0,300..800;1,300..800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
-<link rel="stylesheet" href="HTML/assets/css/site.css">
+<link rel="stylesheet" href="HTML/assets/css/site.css?v=8">
 <script>try{if(sessionStorage.getItem("pt"))document.documentElement.classList.add("is-entering")}catch(e){}</script>
 <link rel="preload" as="image" href="HTML/assets/img/portrait-grad.webp">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://thilan.novalinkinnovations.com/#person","name":"Sanjula Thilan","url":"https://thilan.novalinkinnovations.com/","image":"https://thilan.novalinkinnovations.com/HTML/assets/img/portrait-wall.webp","jobTitle":"UX Engineer & UI/UX Designer","email":"mailto:sanjulathilan12321@gmail.com","telephone":"+61450679814","address":{"@type":"PostalAddress","addressLocality":"Melbourne","addressRegion":"VIC","addressCountry":"AU"},"alumniOf":{"@type":"CollegeOrUniversity","name":"NSBM Green University"},"knowsAbout":["UX design","UI design","Front-end development","Business analysis","Accessibility (WCAG)","Figma","React"],"sameAs":["https://www.linkedin.com/in/sanjula-thilan-17b77b243"]},{"@type":"WebSite","@id":"https://thilan.novalinkinnovations.com/#website","url":"https://thilan.novalinkinnovations.com/","name":"Sanjula Thilan","inLanguage":"en-AU","publisher":{"@id":"https://thilan.novalinkinnovations.com/#person"}}]}</script>
@@ -82,6 +82,11 @@
 
 <!-- (01) HERO ======================================================= -->
 <section class="hero" data-theme="paper" aria-labelledby="hero-title">
+  <div class="hero__fx" aria-hidden="true">
+    <canvas class="hero__field"></canvas>
+    <span class="hero__orb hero__orb--v"></span>
+    <span class="hero__orb hero__orb--l"></span>
+  </div>
   <div class="hero__meta label">
     <span>(Portfolio — 2026)</span>
     <span>UX Engineer · UI/UX Designer · Business Analyst</span>
@@ -91,7 +96,7 @@
   <h1 class="display hero__title" id="hero-title">
     <span class="sr-only">Sanjula Thilan — Australia-based UX Engineer and UI/UX Designer</span>
     <span class="hero__row hero__row--1"><span class="hero__word">Sanjula</span><span class="hero__star"><svg viewBox="0 0 80 80" fill="currentColor" aria-hidden="true"><path d="M78.4 38.4H62.6c-1.6 0-4.8-.2-7.1-.8-2.3-.6-4.3-.8-6.3-2.4-2-1.2-3.5-3.2-4.7-4.8-1.2-1.6-1.6-3.6-2-5.5-.3-1.5-.7-4.3-.8-5.9-.2-4.3 0-17.4 0-17.4C41.8.8 41 0 40.2 0s-1.6.8-1.6 1.6V19c0 1.6-.6 4.3-.8 5.9-.3 2-.8 4-2 5.5-1.2 2-2.8 3.6-4.7 4.8s-4 1.8-6.3 2.4c-1.9.5-4.7.6-6.7.8-3.9.4-16.6 0-16.6 0C.8 38.4 0 39.2 0 40s.8 1.6 1.6 1.6h16.6c1.6 0 4.8.3 6.7.8 2.3.6 4.3.8 6.3 2.4 1.6 1.2 3.2 2.8 4.3 4.4 1.2 2 2.1 3.9 2.4 6.3.2 1.7.7 4.7.8 6.7.2 4 0 16.2 0 16.2 0 .8.8 1.6 1.6 1.6s1.6-.8 1.6-1.6V62.2c0-1.6.5-5.1.8-6.7.5-2.3.8-4.4 2.4-6.3 1.2-1.6 2.8-3.2 4.3-4.4 2-1.2 3.9-2 6.3-2.4 1.8-.3 5.1-.7 7.1-.8 3.5-.2 15.8 0 15.8 0 .8 0 1.6-.8 1.6-1.6s-.8-1.6-1.6-1.6z"/></svg></span><span class="hero__index" aria-hidden="true">UX Engineer<br>&amp; Designer</span></span>
-    <span class="hero__row hero__row--2"><span class="hero__pill" aria-hidden="true"><img src="HTML/assets/img/portrait-grad.webp" alt="" width="1200" height="1200" fetchpriority="high"></span><span class="hero__word">Thilan</span></span>
+    <span class="hero__row hero__row--2"><span class="hero__badge" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="badge-circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs><circle cx="100" cy="100" r="98" class="hero__badge-bg"/><g class="hero__badge-ring"><text><textPath href="#badge-circle" startOffset="0" textLength="458" lengthAdjust="spacing">UX ENGINEER • UI/UX DESIGNER • MELBOURNE • </textPath></text></g><path class="hero__badge-arrow" d="M84 116 116 84M92 84h24v24" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="hero__pill" aria-hidden="true"><img src="HTML/assets/img/portrait-grad.webp" alt="" width="1200" height="1200" fetchpriority="high"></span><span class="hero__word">Thilan</span></span>
   </h1>
 
   <div class="hero__based">
@@ -503,6 +508,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" integrity="sha384-xb96EMJeax+NLXMC88ZBa1xAeAW+kn+horHh/zFlbMLG2UPWhMJJSlv7fi57hS+Q" crossorigin="anonymous" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" integrity="sha384-FKTX0CNJ8ngN1oGMBReVu7mvjTJyjFiD5etb1NKnYxc+8eFI2O0KWnksTN+oTFcu" crossorigin="anonymous" defer></script>
-<script src="HTML/assets/js/site.js?v=4" defer></script>
+<script src="HTML/assets/js/site.js?v=6" defer></script>
 </body>
 </html>
