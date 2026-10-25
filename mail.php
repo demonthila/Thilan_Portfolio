@@ -6,6 +6,7 @@
  */
 const RECIPIENT    = 'sanjulathilan12321@gmail.com';
 const SITE_NAME    = 'Sanjula Thilan Portfolio';
+const SENDER       = 'noreply@thilan.novalinkinnovations.com';
 const MAX_NAME     = 100;
 const MAX_MESSAGE  = 5000;
 const MIN_SECONDS  = 3;   // reject forms submitted faster than a human could type
@@ -61,15 +62,20 @@ $body = "<html><head><meta charset='utf-8'></head>"
 	. "<p style='white-space:pre-wrap'>" . $h($message) . "</p>"
 	. "</body></html>";
 
-$host = preg_replace('/[^a-z0-9.\-]/i', '', isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost');
 $subject = 'New contact form message - ' . mb_substr($name, 0, 60);
 
-$headers  = "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= "From: " . SITE_NAME . " <noreply@" . $host . ">\r\n";
-$headers .= "Reply-To: " . $email . "\r\n";
+// Headers as an array so PHP writes the line endings itself. A hand-built "\r\n" string
+// gets mangled by Hostinger's sendmail, which breaks the From header and Gmail drops the message.
+// The sender is fixed to this domain (covered by its SPF record), whatever hostname the visitor used.
+$headers = [
+	'MIME-Version' => '1.0',
+	'Content-Type' => 'text/html; charset=UTF-8',
+	'From'         => SITE_NAME . ' <' . SENDER . '>',
+	'Reply-To'     => $email,
+	'X-Mailer'     => 'PHP/' . phpversion(),
+];
 
-if (@mail(RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers)) {
+if (mail(RECIPIENT, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers)) {
 	echo 'success';
 } else {
 	error_log('Contact form: mail() failed');
