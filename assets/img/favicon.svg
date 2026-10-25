@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#16140f"/>
+  <text x="9" y="44" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="34" letter-spacing="-3" fill="#f4f1eb">st</text>
+  <circle cx="50" cy="41" r="4.2" fill="#d2603a"/>
+</svg>
